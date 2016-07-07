@@ -1,7 +1,5 @@
 package com.school.huozi.wifiHelper.utils;
 
-import android.util.Log;
-
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -17,7 +15,7 @@ import java.util.zip.GZIPInputStream;
 public class HttpUtil {
 
     /**
-     * 判断是否连接上互联网
+     * 判断是否能够连接上互联网
      */
     public static boolean checkConnect() {
         // 个人觉得使用miui这个链接有失效的风险，访问百度主页验证200状态码亦可
@@ -35,7 +33,7 @@ public class HttpUtil {
             connection.setReadTimeout(SOCKET_TIMEOUT_MS);
             connection.setUseCaches(false);
             connection.connect();
-            Log.d("HttpUtil", String.valueOf(connection.getResponseCode()));
+
             return connection.getResponseCode() == 204;
         } catch (Exception e) {
             return false;
@@ -50,11 +48,11 @@ public class HttpUtil {
     /**
      * 发送http post请求
      * @param address 链接url
-     * @param headerMap 请求头map
+     * @param headerMap 请求头map 不可为null
      * @param paramsMap 参数map
      */
     public static String sendPostRequest(final String address,
-                                         Map<String, String> headerMap, Map<String, String> paramsMap) {
+            Map<String, String> headerMap, Map<String, String> paramsMap) {
 
         HttpURLConnection connection = null;
         StringBuilder response = new StringBuilder();
@@ -65,8 +63,7 @@ public class HttpUtil {
             connection.setRequestMethod("POST");
             connection.setConnectTimeout(Const.SOCKET_TIMEOUT_MS);
             connection.setReadTimeout(Const.SOCKET_TIMEOUT_MS);
-            // 设置默认的请求头[来自配置文件***.properties]
-//            setHeaders(connection);
+
             // 设置特殊请求头
             for (String header_name : headerMap.keySet()) {
                 connection.setRequestProperty(header_name,
@@ -80,7 +77,7 @@ public class HttpUtil {
             // 接收响应内容
             InputStream in = connection.getInputStream();
             String encoding = connection.getContentEncoding();
-            // 判断返回的信息是否已编码
+            // 判断返回的信息是否压缩
             if(!Utils.isBlank(encoding) && encoding.contains("gzip")) {
                 in = new GZIPInputStream(in);
             }
@@ -102,34 +99,11 @@ public class HttpUtil {
 
 
     /**
-     * 从配置文件中设置请求头
-     * @author 詹亮名
-     * @date:2016-6-4上午11:39:21
-     */
-//    private static void setHeaders(HttpURLConnection connection) {
-//
-//        String headerName = Const.HEADER;
-//        if(Utils.isBlank(headerName)) {
-//            System.out.println("Warning: No \"header_name\" " +
-//                    "in configuration file.");
-//            return;
-//        }
-//        // 获取需要设置的request header
-//        headerName = headerName.substring(1, headerName.length()-1);
-//        String [] headers = headerName.split(",");
-//
-//        for (String header : headers) {
-//            header = header.trim();
-//            connection.setRequestProperty(header, CfgUtil.get(header));
-//        }
-//    }
-
-    /**
      * 将参数map转换成url参数形式: k1=v1&k2=v2...
      * @param paramsMap map类型的参数
      */
     private static String urlEncode(Map<String, String> paramsMap) {
-        if (paramsMap.isEmpty()) {
+        if (paramsMap == null || paramsMap.isEmpty()) {
             return "";
         }
         StringBuilder builder = new StringBuilder();
