@@ -8,10 +8,10 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.school.huozi.wifi.MainActivity">
+    tools:context="com.school.huozi.wifiHelper.MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enjoy the wifi!"/>
+        android:text="@string/welcome"/>
 </RelativeLayout>

@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Wifi</string>
+    <string name="app_name">Wifi Helper</string>
+    <string name="welcome">Enjoy the wifi!</string>
 </resources>
