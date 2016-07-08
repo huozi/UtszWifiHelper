@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "com.school.huozi.wifi"
+        applicationId "com.school.huozi.wifiHelper"
         minSdkVersion 21
         targetSdkVersion 23
         versionCode 1
