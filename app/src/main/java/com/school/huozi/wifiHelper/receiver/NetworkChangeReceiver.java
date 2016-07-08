@@ -42,8 +42,8 @@ public class NetworkChangeReceiver extends BroadcastReceiver{
                     break;
                 case SIGN_CODE:
                     boolean signState = msg.getData().getBoolean("state");
-                    String tip = signState ? "available." : "unavailable.";
-                    Toast.makeText(mContext, "Network is " + tip,
+                    String tips = signState ? "available." : "unavailable.";
+                    Toast.makeText(mContext, "Network is " + tips,
                             Toast.LENGTH_SHORT).show();
             }
         }
