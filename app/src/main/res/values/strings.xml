@@ -2,4 +2,7 @@
     <string name="app_name">Wifi Helper</string>
     <string name="title">账号设置</string>
     <string name="tips">只需一步操作，即可设置好您的账号</string>
+
+    <string name="account">账 号</string>
+    <string name="password">密 码</string>
 </resources>
