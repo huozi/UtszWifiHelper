@@ -1,10 +1,15 @@
 <resources>
     <string name="app_name">Wifi Helper</string>
+    <!-- Login layout. -->
     <string name="title">账号设置</string>
     <string name="tips">只需一步操作，即可设置好您的账号</string>
-
     <string name="account">账 号</string>
     <string name="password">密 码</string>
-
     <string name="confirm">确定</string>
+
+    <!-- Main layout. -->
+    <string name="main_title">正在工作</string>
+    <string name="main_tips">若需更换账号，请点击重置账号退出</string>
+    <string name="main_hello">您好！WIFI助手正常工作中</string>
+    <string name="reset">重置账号</string>
 </resources>

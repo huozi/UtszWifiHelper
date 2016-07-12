@@ -3,6 +3,7 @@ package com.school.huozi.wifiHelper.receiver;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -43,7 +44,7 @@ public class NetworkChangeReceiver extends BroadcastReceiver{
                 case SIGN_CODE:
                     boolean signState = msg.getData().getBoolean("state");
                     String tips = signState ? "available." : "unavailable.";
-                    Toast.makeText(mContext, "Network is " + tips,
+                    Toast.makeText(mContext, "WIFI is " + tips,
                             Toast.LENGTH_SHORT).show();
             }
         }
@@ -53,6 +54,18 @@ public class NetworkChangeReceiver extends BroadcastReceiver{
     @Override
     public void onReceive(Context context, Intent intent) {
         mContext = context;
+
+        // 读取登记账号
+        SharedPreferences pref = mContext.getSharedPreferences("login_info", Context.MODE_PRIVATE);
+        boolean isLogin = pref.getBoolean("login_flg", false);
+
+        if (!isLogin) {
+            return;
+        }
+        PARAMS_MAP.put("username", pref.getString("account", ""));
+        PARAMS_MAP.put("password", pref.getString("password", ""));
+
+        // 网络连接管理器
         ConnectivityManager connectivityManager = (ConnectivityManager)
                 context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
@@ -102,7 +115,7 @@ public class NetworkChangeReceiver extends BroadcastReceiver{
     /**
      * 登入校园网账号
      */
-    private  void signIn() {
+    private void signIn() {
         final String signUrl = "http://10.0.10.66/cgi-bin/srun_portal";
 
         new Thread(new Runnable() {
