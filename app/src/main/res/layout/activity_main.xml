@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="28sp"
-        android:layout_span="2"
         android:text="@string/main_title"/>
     <TextView
         android:id="@+id/username"
@@ -28,7 +27,6 @@
         android:id="@+id/reset"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_span="2"
         android:textSize="18sp"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:text="@string/reset"/>
@@ -36,6 +34,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_span="2"
         android:text="@string/main_tips"/>
 </LinearLayout>
