@@ -63,13 +63,12 @@ public class NetworkChangeReceiver extends BroadcastReceiver{
                 put("username", "***");
                 put("password", "***");
                 put("ac_id", "3");
-                put("type", "1");
                 put("wbaredirect", "");
-                put("mac", "");
+                put("user_mac", "");
                 put("user_ip", "");
-                put("pop", "1");
-                put("is_ldap", "1");
-                put("nas_init_port", "1");
+                put("nas_ip", "");
+                put("save_me", "1");
+                put("ajax", "1");
             }};
 
 
@@ -97,7 +96,7 @@ public class NetworkChangeReceiver extends BroadcastReceiver{
      * 登入校园网账号
      */
     private void signIn() {
-        final String signUrl = "http://10.0.10.66/cgi-bin/srun_portal";
+        final String signUrl = "http://10.0.10.66:804/include/auth_action.php";
 
         new Thread(new Runnable() {
             @Override
