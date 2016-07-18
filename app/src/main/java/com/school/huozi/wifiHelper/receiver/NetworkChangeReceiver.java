@@ -62,7 +62,7 @@ public class NetworkChangeReceiver extends BroadcastReceiver{
                 put("action", "login");
                 put("username", "***");
                 put("password", "***");
-                put("ac_id", "3");
+                put("ac_id", "1");
                 put("wbaredirect", "");
                 put("user_mac", "");
                 put("user_ip", "");
@@ -106,7 +106,7 @@ public class NetworkChangeReceiver extends BroadcastReceiver{
                 Message msg = new Message();
                 msg.what = SIGN_CODE;
                 Bundle bundle = new Bundle();
-                bundle.putBoolean("state", "login_ok".equalsIgnoreCase(resp));
+                bundle.putBoolean("state", resp.startsWith("login_ok"));
                 msg.setData(bundle);
                 mHandler.sendMessage(msg);
             }
