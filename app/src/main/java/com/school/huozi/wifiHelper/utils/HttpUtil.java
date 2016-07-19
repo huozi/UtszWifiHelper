@@ -18,8 +18,7 @@ public class HttpUtil {
      * 判断是否能够连接上互联网
      */
     public static boolean checkConnect() {
-        // 个人觉得使用miui这个链接有失效的风险，访问百度主页验证200状态码亦可
-        // 因为连接有portal的wifi没通过验证访问互联网时一般是302跳转到登录页面
+        // 个人觉得使用MIUI这个链接有失效的风险
         final String checkUrl = "http://connect.rom.miui.com/generate_204";
         final int SOCKET_TIMEOUT_MS = 1000;
 
