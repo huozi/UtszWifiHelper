@@ -96,7 +96,7 @@ public class NetworkChangeReceiver extends BroadcastReceiver{
      * 登入校园网账号
      */
     private void signIn() {
-        final String signUrl = "http://10.0.10.66:804/include/auth_action.php";
+        final String signUrl = "http://10.0.10.66/include/auth_action.php";
 
         new Thread(new Runnable() {
             @Override
